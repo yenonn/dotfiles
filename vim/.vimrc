@@ -136,6 +136,7 @@ inoremap UU <Esc>u
 
 nnoremap <C-z> :NERDTreeToggle<CR>
 let NERDTreeCustomOpenArgs = {'file':{'where':'v','keepopen':1,'stay':1}}
+let NERDTreeShowHidden=1
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
