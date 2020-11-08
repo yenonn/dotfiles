@@ -15,8 +15,6 @@ set nowrap
 set smartcase
 set noswapfile
 set nobackup
-set undodir=~/.vim/undodir
-set undofile
 set incsearch
 set colorcolumn=100
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -35,6 +33,14 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_lint_on_text_changed = 'never'
 
+" Installation url sources 
+" https://github.com/junegunn/vim-plug
+"installing the vim plugin
+" mkdir ~/.vim/plugged
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" From the vim command windows, prompt :PlugInstall to proceed plugins
+" installation
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
