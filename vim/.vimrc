@@ -97,27 +97,22 @@ nnoremap <leader>f :Files<CR>
 nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
 nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_key_list_select_completion = ['<TAB>']
-let g:ycm_key_list_stop_completion = ['<C-c>']
+let g:ycm_key_list_select_completion = ['<C-Space>']
+let g:ycm_key_list_stop_completion = ['<C-c>', '<leader>']
 
 "Don't be a noob, join the no arrows key movement
-inoremap  <Down> <Nop>
-imap  <Left> <Nop>
-imap  <Right> <Nop>
-imap  <Up> <Nop>
-imap  <Down> <Nop>
-nnoremap  <Up> <Nop>
-nnoremap  <Down> <Nop>
-nnoremap  <Left> <Nop>
-nnoremap  <Right> <Nop>
-cnoremap  <Down> <Nop>
-cnoremap  <Left> <Nop>
-cnoremap  <Right> <Nop>
-cnoremap  <Up> <Nop>
-vnoremap  <Down> <Nop>
-vnoremap  <Left> <Nop>
-vnoremap  <Right> <Nop>
-vnoremap  <Up> <Nop>
+imap <Down> <NOP>
+imap <Left> <NOP>
+imap <Right> <NOP>
+imap <Up> <NOP>
+map <Up> <NOP>
+map <Down> <NOP>
+map <Left> <NOP>
+map <Right> <NOP>
+vmap <Down> <NOP>
+vmap <Left> <NOP>
+vmap <Right> <NOP>
+vmap <Up> <NOP>
 
 "imap ,, <Right>
 imap .. <C-O>A
@@ -128,6 +123,11 @@ inoremap CC <Esc>C
 inoremap SS <Esc>S
 inoremap DD <Esc>dd
 inoremap UU <Esc>u
+inoremap <C-b> <C-o>b
+inoremap <C-w> <C-o>w
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
 "inoremap <C-j> <Down>
 "inoremap <C-k> <Up>
 "inoremap <C-l> <Right>
