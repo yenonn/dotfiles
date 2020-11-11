@@ -98,8 +98,8 @@ nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
 nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_key_list_select_completion = ['<C-Space>']
-let g:ycm_key_list_stop_completion = ['<C-c>', '<leader>']
-
+let g:ycm_key_list_stop_completion = ['<C-c>', '<C-x>']
+let g:ycm_key_list_stop_completion = ['<C-c>', '<C-x>']
 "Don't be a noob, join the no arrows key movement
 imap <Down> <NOP>
 imap <Left> <NOP>
@@ -116,6 +116,7 @@ vmap <Up> <NOP>
 
 "imap ,, <Right>
 imap .. <C-O>A
+imap jk <Esc>
 inoremap II <Esc>I
 inoremap AA <Esc>A
 inoremap OO <Esc>O
@@ -123,7 +124,7 @@ inoremap CC <Esc>C
 inoremap SS <Esc>S
 inoremap DD <Esc>dd
 inoremap UU <Esc>u
-inoremap <C-b> <C-o>b
+inoremap <C-b> <C-o>h
 inoremap <C-w> <C-o>w
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
@@ -141,6 +142,7 @@ let NERDTreeShowHidden=1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_quiet_messages = { "type": "style" }
