@@ -1,10 +1,11 @@
 set mouse+=a
+set undofile
 set cursorline
 set nocompatible
 set noerrorbells
 set autoindent
 set expandtab
-set tabstop=4 
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -25,15 +26,15 @@ let g:indentLine_char = '⦙'
 set foldlevelstart=20
 
 "Lint
-let b:ale_linters = ['flake8']
-let b:ale_fixers = ['autopep8']
+let b:ale_linters = ['black']
+let b:ale_fixers = ['black']
 let b:ale_warn_about_trailing_whitespace = 0
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_lint_on_text_changed = 'never'
 
-" Installation url sources 
+" Installation url sources
 " https://github.com/junegunn/vim-plug
 "installing the vim plugin
 " mkdir ~/.vim/plugged
@@ -54,17 +55,28 @@ Plug 'Yggdroot/indentLine'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
-Plug 'tell-k/vim-autopep8'
 Plug 'plasticboy/vim-markdown'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-syntastic/syntastic'
-Plug 'Valloric/YouCompleteMe', { 'commit':'d98f896' } 
+Plug 'psf/black'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug '907th/vim-auto-save'
+Plug 'jiangmiao/auto-pairs'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 colorscheme gruvbox
 set background=dark
+
+let g:auto_save = 1
+let g:auto_save_events = ["TextChanged", "CursorHold"]
+autocmd BufWritePre *.py execute ':Black'
+let g:black_virtualenv = "~/.vim/plugged/black"
+
+nnoremap <C-x> :FloatermNew<CR>
+let g:floaterm_autoclose = 1
 
 let mapleader = " "
 let g:netrw_browse_split = 2
@@ -82,41 +94,21 @@ nnoremap <leader>. :wincmd = \| :wincmd l \| :wincmd \|<CR>
 nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
 nnoremap <leader>n :tabn<CR>
 nnoremap <leader>p :tabp<CR>
-nnoremap <leader>q :q!<CR>
+nnoremap <leader>q :wq!<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>rr :e!<CR>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " PLUGIN: FZF
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <leader>f :Files<CR>
-"nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
 
-nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
-nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_key_list_select_completion = ['<C-Space>']
-let g:ycm_key_list_stop_completion = ['<C-c>', '<C-x>']
-let g:ycm_key_list_stop_completion = ['<C-c>', '<C-x>']
-"Don't be a noob, join the no arrows key movement
-imap <Down> <NOP>
-imap <Left> <NOP>
-imap <Right> <NOP>
-imap <Up> <NOP>
-map <Up> <NOP>
-map <Down> <NOP>
-map <Left> <NOP>
-map <Right> <NOP>
-vmap <Down> <NOP>
-vmap <Left> <NOP>
-vmap <Right> <NOP>
-vmap <Up> <NOP>
-
-"imap ,, <Right>
-imap .. <C-O>A
-imap jk <Esc>
+imap >> <C-O>A
+imap << <C-O>I
 inoremap II <Esc>I
 inoremap AA <Esc>A
 inoremap OO <Esc>O
@@ -125,6 +117,7 @@ inoremap SS <Esc>S
 inoremap DD <Esc>dd
 inoremap UU <Esc>u
 inoremap <C-b> <C-o>h
+inoremap <c-h> <left>
 inoremap <C-w> <C-o>w
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
@@ -147,10 +140,10 @@ set statusline+=%*
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_quiet_messages = { "type": "style" }
 
-autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
-let g:autopep8_on_save = 1
-let g:autopep8_disable_show_diff=1
-let g:autopep8_ignore="E501,W293"
+"autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+"let g:autopep8_on_save = 1
+"let g:autopep8_disable_show_diff=1
+"let g:autopep8_ignore="E501,W293"
 
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
