@@ -104,8 +104,8 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " PLUGIN: FZF
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent><leader>f :Files<CR>
+nnoremap <C-r> :Rg
 
 imap >> <C-O>A
 imap << <C-O>I
