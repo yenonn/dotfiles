@@ -101,6 +101,8 @@ nnoremap <leader>rr :e!<CR>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " PLUGIN: FZF
 nnoremap <silent> <Leader>b :Buffers<CR>
