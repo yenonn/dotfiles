@@ -1,0 +1,8 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["python", "go" ],
+    // python config
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.venvPath": "/home/yenonn/Development/virtualenv",
+    "python.jediEnabled": true,
+}
