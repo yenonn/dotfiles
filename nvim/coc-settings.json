@@ -1,5 +1,5 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["python", "go" ],
+    "coc.preferences.formatOnSaveFiletypes": ["python", "go", "typescript", "typescriptreact" ],
     // python config
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,

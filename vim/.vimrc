@@ -72,8 +72,6 @@ set background=dark
 
 let g:auto_save = 1
 let g:auto_save_events = ["TextChanged", "CursorHold"]
-autocmd BufWritePre *.py execute ':Black'
-let g:black_virtualenv = "~/.vim/plugged/black"
 
 nnoremap <C-x> :FloatermNew<CR>
 let g:floaterm_autoclose = 1

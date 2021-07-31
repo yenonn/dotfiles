@@ -18,12 +18,12 @@ set colorcolumn=100
 " Installation url sources
 " https://github.com/junegunn/vim-plug
 "installing the vim plugin
-" mkdir ~/.vim/plugged
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+" mkdir ~/.nvim/plugged
+" curl -fLo ~/.nvim/autoload/plug.vim --create-dirs \
 "    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " From the vim command windows, prompt :PlugInstall to proceed plugins
 " installation
-call plug#begin('~/.local/share/nvim/site/plugged')
+call plug#begin('~/.nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -35,6 +35,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'f-person/git-blame.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 nnoremap <leader>h :wincmd h<CR>
@@ -78,7 +80,7 @@ let g:auto_save_events = ["TextChanged", "CursorHold"]
 
 " NERDTree
 nnoremap <C-z> :NERDTreeToggle<CR>
-let NERDTreeCustomOpenArgs = {'file':{'where':'v','keepopen':1,'stay':1}}
+let NERDTreeCustomOpenArgs = {'file':{'where':'t','keepopen':1,'stay':1}}
 let NERDTreeShowHidden=1
 
 " Floaterm
@@ -89,3 +91,9 @@ let g:floaterm_autoclose = 1
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 let g:indentLine_char = '⦙'
 set foldlevelstart=20
+
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'

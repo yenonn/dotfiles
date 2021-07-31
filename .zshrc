@@ -107,15 +107,15 @@ fi
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias vi="vim"
+alias vi="nvim"
 alias lg="lazygit"
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
 alias go='/usr/local/go/bin/go'
 alias k9s='k9s --logoless'
 alias yt='youtube-dl'
+alias mpview='mpv --script-opts=iptv=1'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/yenonn/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/home/yenonn/bin/google-cloud-sdk/path.zsh.inc'; fi
@@ -132,3 +132,13 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Go environment variable
+if [ -f '/home/yenonn/.config/go/env' ]; then . '/home/yenonn/.config/go/env'; fi
+
+# KUBE variable
+export KUBE_EDITOR=vi
+alias cluster1="kubectx cluster1"
+alias cluster2="kubectx cluster2"
+export CTX_CLUSTER1="cluster1"
+export CTX_CLUSTER2="cluster2"
