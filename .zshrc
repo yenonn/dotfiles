@@ -137,8 +137,13 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 if [ -f '/home/yenonn/.config/go/env' ]; then . '/home/yenonn/.config/go/env'; fi
 
 # KUBE variable
-export KUBE_EDITOR=vi
+export KUBE_EDITOR=nvim
+export EDITOR=nvim
+export VISUAL=nvim
 alias cluster1="kubectx cluster1"
 alias cluster2="kubectx cluster2"
+alias rediscluster1="kubectx rediscluster1"
+alias rediscluster2="kubectx rediscluster2"
+alias newshell="kubectl run my-shell --rm -i --tty --image busybox -- bash"
 export CTX_CLUSTER1="cluster1"
 export CTX_CLUSTER2="cluster2"

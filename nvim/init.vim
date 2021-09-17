@@ -1,4 +1,4 @@
-let mapleader = " "
+let mapleader=" "
 colorscheme gruvbox
 set background=dark
 set mouse+=a
@@ -37,8 +37,18 @@ Plug 'f-person/git-blame.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-commentary'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
+" nnoremap <Tab> <Esc>
+" inoremap :: <Esc>
+" vnoremap <Tab> <Esc>gV
+" onoremap <Tab> <Esc>
+" cnoremap <Tab> <C-C><Esc>
+" inoremap <Tab> <Esc>`^
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -58,8 +68,8 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-inoremap >> <C-O>A
-inoremap << <C-O>I
+"inoremap >> <C-O>A
+"inoremap << <C-O>I
 inoremap II <Esc>I
 inoremap AA <Esc>A
 inoremap OO <Esc>O
@@ -80,7 +90,7 @@ let g:auto_save_events = ["TextChanged", "CursorHold"]
 
 " NERDTree
 nnoremap <C-z> :NERDTreeToggle<CR>
-let NERDTreeCustomOpenArgs = {'file':{'where':'t','keepopen':1,'stay':1}}
+let NERDTreeCustomOpenArgs = {'file':{'where':'t','keepopen':0,'stay':0}}
 let NERDTreeShowHidden=1
 
 " Floaterm
@@ -96,4 +106,7 @@ set foldlevelstart=20
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
+"let g:airline#extensions#tabline#formatter = 'default'
+
+" vim-commentary remap to c-/
+nnoremap <C-/> :Commentary<CR>

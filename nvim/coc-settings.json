@@ -1,8 +1,22 @@
 {
+    "suggest.noselect": false,
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "!",
+    "diagnostic.infoSign": "?",
+    "diagnostic.checkCurrentLine": true,
     "coc.preferences.formatOnSaveFiletypes": ["python", "go", "typescript", "typescriptreact" ],
-    // python config
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.venvPath": "/home/yenonn/Development/virtualenv",
     "python.jediEnabled": true,
+    "languageserver": {
+       "golang": {
+         "command": "gopls",
+         "rootPatterns": ["go.mod"],
+         "filetypes": ["go"]
+       }
+    },
+    "go.goplsOptions": {
+        "staticcheck": true
+     }
 }
