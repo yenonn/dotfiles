@@ -43,12 +43,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
-" nnoremap <Tab> <Esc>
-" inoremap :: <Esc>
-" vnoremap <Tab> <Esc>gV
-" onoremap <Tab> <Esc>
-" cnoremap <Tab> <C-C><Esc>
-" inoremap <Tab> <Esc>`^
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -68,8 +62,6 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-"inoremap >> <C-O>A
-"inoremap << <C-O>I
 inoremap II <Esc>I
 inoremap AA <Esc>A
 inoremap OO <Esc>O
@@ -108,5 +100,9 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline#extensions#tabline#formatter = 'default'
 
-" vim-commentary remap to c-/
-nnoremap <C-/> :Commentary<CR>
+" fzf find
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-g> :GFiles<CR>
+nnoremap <silent> <C-c> :Commits<CR>
+nnoremap <silent> <C-o> :Buffers<CR>
+nnoremap <C-f> :Rg! 
