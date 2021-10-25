@@ -44,6 +44,7 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 nnoremap <leader>h :wincmd h<CR>
@@ -54,8 +55,9 @@ nnoremap <leader>z :wincmd \|<CR>
 nnoremap <leader>zz :wincmd =<CR>
 nnoremap <leader>. :wincmd = \| :wincmd l \| :wincmd \|<CR>
 nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
-nnoremap <leader>n :tabn<CR>
-nnoremap <leader>p :tabp<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
+nnoremap <leader>d :bd<CR>
 nnoremap <leader>q :wq!<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>w :w<CR>
@@ -85,7 +87,7 @@ let g:auto_save_events = ["TextChanged", "CursorHold"]
 
 " NERDTree
 nnoremap <C-z> :NERDTreeToggle<CR>
-let NERDTreeCustomOpenArgs = {'file':{'where':'t','keepopen':0,'stay':0}}
+let NERDTreeCustomOpenArgs = {'file':{'where':'v', 'reuse':'all', 'keepopen':0, 'stay':0}}
 let NERDTreeShowHidden=1
 
 " Floaterm
@@ -112,13 +114,15 @@ nnoremap <C-f> :Rg!
 
 " Telescope
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>tf <cmd>Telescope find_files<cr>
+nnoremap <leader>tg <cmd>Telescope live_grep<cr>
+nnoremap <leader>tb <cmd>Telescope buffers<cr>
+nnoremap <leader>th <cmd>Telescope help_tags<cr>
+nnoremap <leader>tj <cmd>Telescope jumplist<cr>
 
 " Using Lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>tf <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>tg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>tb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>th <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>tj <cmd>lua require('telescope.builtin').jumplist()<cr>
