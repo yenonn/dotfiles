@@ -81,6 +81,18 @@ inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
 
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 " auto_save config
 let g:auto_save = 1
 let g:auto_save_events = ["TextChanged", "CursorHold"]
@@ -110,7 +122,7 @@ nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
-nnoremap <C-f> :Rg! 
+nnoremap <C-f> :Rg<CR>
 
 " Telescope
 " Find files using Telescope command-line sugar.
