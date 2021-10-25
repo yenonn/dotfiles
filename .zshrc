@@ -89,6 +89,10 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# KUBE variable
+export KUBE_EDITOR=nvim
+export EDITOR=nvim
+export VISUAL=nvim
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
@@ -99,30 +103,38 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
+alias zc="vim ~/.zshrc"
+alias cat="bat"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vi="nvim"
 alias vim="nvim"
 alias lg="lazygit"
-alias cp="cp -i"                                                # Confirm before overwriting something
-alias df='df -h'                                                # Human-readable sizes
-alias free='free -m'                                            # Show sizes in MB
+alias cp="cp -i"
+alias df='df -h'
+alias free='free -m'
 alias go='/usr/local/go/bin/go'
 alias k9s='k9s --logoless'
 alias yt='youtube-dl'
+alias r='ranger'
 alias mpview='mpv --script-opts=iptv=1'
+alias preview="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -500'
+"
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/yenonn/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/home/yenonn/bin/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/yenonn/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/yenonn/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias gc="/home/yenonn/bin/google-cloud-sdk/bin/gcloud"
 
 # fzf
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
@@ -137,14 +149,10 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Go environment variable
 if [ -f '/home/yenonn/.config/go/env' ]; then . '/home/yenonn/.config/go/env'; fi
 
-# KUBE variable
-export KUBE_EDITOR=nvim
-export EDITOR=nvim
-export VISUAL=nvim
 alias cluster1="kubectx cluster1"
 alias cluster2="kubectx cluster2"
 alias rediscluster1="kubectx rediscluster1"
 alias rediscluster2="kubectx rediscluster2"
-alias newshell="kubectl run my-shell --rm -i --tty --image busybox -- bash"
+alias newshell="kubectl run my-shell --rm -i --tty --image ubuntu -- bash"
 export CTX_CLUSTER1="cluster1"
 export CTX_CLUSTER2="cluster2"

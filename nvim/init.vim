@@ -41,6 +41,9 @@ Plug 'fatih/vim-go'
 Plug 'tpope/vim-commentary'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 nnoremap <leader>h :wincmd h<CR>
@@ -86,7 +89,7 @@ let NERDTreeCustomOpenArgs = {'file':{'where':'t','keepopen':0,'stay':0}}
 let NERDTreeShowHidden=1
 
 " Floaterm
-nnoremap <C-x> :FloatermNew<CR>
+nnoremap <C-x> :FloatermNew! cd %:p:h<CR>
 let g:floaterm_autoclose = 1
 
 " YAML files
@@ -101,8 +104,21 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline#extensions#tabline#formatter = 'default'
 
 " fzf find
-nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-p> :Files<CR>  
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
-nnoremap <silent> <C-o> :Buffers<CR>
+nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <C-f> :Rg! 
+
+" Telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
