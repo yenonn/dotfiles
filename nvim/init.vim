@@ -1,5 +1,4 @@
 let mapleader=" "
-colorscheme gruvbox
 set background=dark
 set mouse+=a
 set tabstop=4
@@ -46,6 +45,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
+" colorscheme
+colorscheme gruvbox
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
