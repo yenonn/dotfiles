@@ -115,6 +115,7 @@ alias cat="bat"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vi="nvim"
 alias vim="nvim"
+alias v="nvim"
 alias lg="lazygit"
 alias cp="cp -i"
 alias df='df -h'
