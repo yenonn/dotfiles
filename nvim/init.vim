@@ -60,6 +60,7 @@ nnoremap <silent> <C-t> :tabNext<CR>
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>q :wq!<CR>
+nnoremap <leader>qa :qa!<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>rr :e!<CR>
