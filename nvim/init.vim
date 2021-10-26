@@ -56,6 +56,7 @@ nnoremap <leader>zz :wincmd =<CR>
 nnoremap <leader>. :wincmd = \| :wincmd l \| :wincmd \|<CR>
 nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
 nnoremap <leader>n :bn<CR>
+nnoremap <silent> <C-t> :tabNext<CR>  
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>q :wq!<CR>
@@ -75,7 +76,7 @@ inoremap SS <Esc>S
 inoremap DD <Esc>dd
 inoremap UU <Esc>u
 inoremap <C-b> <C-o>h
-inoremap <c-h> <left>
+inoremap <C-h> <left>
 inoremap <C-w> <C-o>w
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
@@ -99,8 +100,11 @@ let g:auto_save_events = ["TextChanged", "CursorHold"]
 
 " NERDTree
 nnoremap <C-z> :NERDTreeToggle<CR>
-let NERDTreeCustomOpenArgs = {'file':{'where':'v', 'reuse':'all', 'keepopen':0, 'stay':0}}
+let NERDTreeCustomOpenArgs = {'file':{'where':'v', 'reuse':'currenttab', 'keepopen':1, 'stay':0}}
 let NERDTreeShowHidden=1
+" auto open NERDTree
+autocmd VimEnter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Floaterm
 nnoremap <C-x> :FloatermNew! cd %:p:h<CR>
@@ -122,6 +126,7 @@ nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
+nnoremap <silent> <C-g> :registers<CR>
 nnoremap <C-f> :Rg<CR>
 
 " Telescope
