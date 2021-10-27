@@ -111,6 +111,7 @@ fi
 #
 # Example aliases
 alias zc="vim ~/.zshrc"
+alias zsource="source ~/.zshrc"
 alias cat="bat"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vi="nvim"
@@ -154,8 +155,9 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
+# powerline settings
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

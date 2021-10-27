@@ -132,9 +132,8 @@ nnoremap <silent> <C-t> :Files<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
-nnoremap <silent> <C-g> :registers<CR>
+nnoremap <silent> <C-r> :registers<CR>
 nnoremap <C-f> :Rg<CR>
-
 command! -bang -bar -nargs=? -complete=dir Cd
     \ call fzf#run(fzf#wrap(
     \ {'source': 'find '.( empty("<args>") ? ( <bang>0 ? "~" : "." ) : "<args>" ) .' -type d',
