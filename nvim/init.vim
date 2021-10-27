@@ -127,12 +127,18 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline#extensions#tabline#formatter = 'default'
 
 " fzf find
-nnoremap <silent> <C-t> :Files %:p:h<CR>
+" nnoremap <silent> <C-t> :Files %:p:h<CR>
+nnoremap <silent> <C-t> :Files<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <C-g> :registers<CR>
 nnoremap <C-f> :Rg<CR>
+
+command! -bang -bar -nargs=? -complete=dir Cd
+    \ call fzf#run(fzf#wrap(
+    \ {'source': 'find '.( empty("<args>") ? ( <bang>0 ? "~" : "." ) : "<args>" ) .' -type d',
+    \ 'sink': 'cd'}))
 
 " Telescope
 " Find files using Telescope command-line sugar.
