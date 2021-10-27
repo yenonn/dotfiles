@@ -60,7 +60,7 @@ nnoremap <leader>zz :wincmd =<CR>
 nnoremap <leader>. :wincmd = \| :wincmd l \| :wincmd \|<CR>
 nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
 nnoremap <leader>n :bn<CR>
-nnoremap <silent> <C-t> :tabNext<CR>  
+nnoremap <silent> <C-n> :tabNext<CR>  
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>q :wq!<CR>
@@ -127,7 +127,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline#extensions#tabline#formatter = 'default'
 
 " fzf find
-nnoremap <silent> <C-p> :Files %:p:h<CR>
+nnoremap <silent> <C-t> :Files %:p:h<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
