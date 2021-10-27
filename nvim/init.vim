@@ -7,23 +7,6 @@
 " From the vim command windows, prompt :PlugInstall to proceed plugins
 " installation
 call plug#begin('~/.nvim/plugged')
-" Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-Plug '907th/vim-auto-save'
-Plug 'jiangmiao/auto-pairs'
-Plug 'voldikss/vim-floaterm'
-" Installation url sources
-" https://github.com/junegunn/vim-plug
-"installing the vim plugin
-" mkdir ~/.nvim/plugged
-" curl -fLo ~/.nvim/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" From the vim command windows, prompt :PlugInstall to proceed plugins
-" installation
-call plug#begin('~/.nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/vim-easy-align'
