@@ -8,7 +8,7 @@
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.venvPath": "/home/yenonn/Development/virtualenv",
-    "python.jediEnabled": true,
+    "python.jediEnabled": false,
     "languageserver": {
        "golang": {
          "command": "gopls",

@@ -1,19 +1,3 @@
-let mapleader=" "
-set background=dark
-set mouse+=a
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set nu rnu
-set nowrap
-set smartcase
-set noswapfile
-set nobackup
-set incsearch
-set colorcolumn=100
-
 " Installation url sources
 " https://github.com/junegunn/vim-plug
 "installing the vim plugin
@@ -23,7 +7,8 @@ set colorcolumn=100
 " From the vim command windows, prompt :PlugInstall to proceed plugins
 " installation
 call plug#begin('~/.nvim/plugged')
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
@@ -45,8 +30,26 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
+
+let mapleader=" "
+set background=dark
+set mouse+=a
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nu rnu
+set nowrap
+set smartcase
+set noswapfile
+set nobackup
+set incsearch
+set colorcolumn=100
+
 " colorscheme
 colorscheme gruvbox
+" colorscheme nord
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -105,8 +108,8 @@ nnoremap <C-z> :NERDTreeToggle<CR>
 let NERDTreeCustomOpenArgs = {'file':{'where':'v', 'reuse':'currenttab', 'keepopen':1, 'stay':0}}
 let NERDTreeShowHidden=1
 " auto open NERDTree
-autocmd VimEnter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd VimEnter * NERDTree
+" autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Floaterm
 nnoremap <C-x> :FloatermNew! cd %:p:h<CR>
@@ -124,7 +127,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline#extensions#tabline#formatter = 'default'
 
 " fzf find
-nnoremap <silent> <C-p> :Files<CR>  
+nnoremap <silent> <C-p> :Files %:p:h<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
