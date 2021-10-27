@@ -1,9 +1,10 @@
 " Installation url sources
 " https://github.com/junegunn/vim-plug
 "installing the vim plugin
-" mkdir ~/.nvim/plugged
-" curl -fLo ~/.nvim/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" mkdir -p ~/.nvim/plugged
+" mkdir -p ~/.nvim/autoload
+" mkdir -p ~/.nvim/colors
+" curl -fLo ~/.nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " From the vim command windows, prompt :PlugInstall to proceed plugins
 " installation
 call plug#begin('~/.nvim/plugged')
@@ -28,10 +29,11 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 let mapleader=" "
+set encoding=UTF-8
 set background=dark
 set mouse+=a
 set tabstop=4
@@ -110,6 +112,16 @@ let NERDTreeShowHidden=1
 " auto open NERDTree
 " autocmd VimEnter * NERDTree
 " autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Trigger help from devicons for more options
+" :help devicons
+let g:webdevicons_enable = 1
+let g:WebDevIconsOS = 'Linux'
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_enable_ctrlp = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
 
 " Floaterm
 nnoremap <C-x> :FloatermNew! cd %:p:h<CR>

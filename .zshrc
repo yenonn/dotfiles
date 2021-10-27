@@ -126,8 +126,8 @@ alias k9s='k9s --logoless'
 alias yt='youtube-dl'
 alias r='ranger'
 alias mpview='mpv --script-opts=iptv=1'
-alias preview="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -500'
-"
+alias preview="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -500'"
+alias c="cmatrix -C blue"
 
 
 # The next line updates PATH for the Google Cloud SDK.
