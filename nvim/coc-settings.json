@@ -3,12 +3,24 @@
     "diagnostic.errorSign": "✘",
     "diagnostic.warningSign": "!",
     "diagnostic.infoSign": "?",
-    "diagnostic.checkCurrentLine": true,
-    "coc.preferences.formatOnSaveFiletypes": ["python", "go", "typescript", "typescriptreact" ],
+    "diagnostic.hintSign": "➤",
+    "diagnostic.virtualText": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "python", 
+        "go", 
+        "typescript", 
+        "typescriptreact" 
+    ],
+    "pyright.enable": true,
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--errors-only"
+    ],
+    "python.pythonPath": "/home/yenonn/Development/virtualenv/python39/bin/python",
     "python.venvPath": "/home/yenonn/Development/virtualenv",
-    "python.jediEnabled": false,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/home/yenonn/.local/bin/black",
     "languageserver": {
        "golang": {
          "command": "gopls",
