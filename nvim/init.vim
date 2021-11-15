@@ -1,4 +1,3 @@
-" Installation url sources
 " https://github.com/junegunn/vim-plug
 "installing the vim plugin
 " mkdir -p ~/.nvim/plugged
@@ -12,7 +11,6 @@ Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug '907th/vim-auto-save'
 Plug 'jiangmiao/auto-pairs'
 Plug 'voldikss/vim-floaterm'
@@ -23,6 +21,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go'
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug 'tpope/vim-commentary'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'airblade/vim-gitgutter'
@@ -30,6 +29,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ggandor/lightspeed.nvim'
 call plug#end()
 
 let mapleader=" "
@@ -73,8 +73,8 @@ nnoremap <leader>rr :e!<CR>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
 inoremap II <Esc>I
 inoremap AA <Esc>A
 inoremap OO <Esc>O
@@ -92,7 +92,7 @@ inoremap <C-l> <C-o>l
 " Copy to clipboard
 vnoremap  y  "+y
 nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
+noremap  <leader>y  "+y
 nnoremap  <leader>yy  "+yy
 
 " Paste from clipboard
@@ -116,7 +116,7 @@ let NERDTreeShowHidden=1
 " Trigger help from devicons for more options
 " :help devicons
 let g:webdevicons_enable = 1
-let g:WebDevIconsOS = 'Linux'
+let g:webDevIconsOS = 'Linux'
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:webdevicons_enable_ctrlp = 1
@@ -148,7 +148,7 @@ nnoremap <silent> <C-r> :registers<CR>
 nnoremap <C-f> :Rg<CR>
 command! -bang -bar -nargs=? -complete=dir Cd
     \ call fzf#run(fzf#wrap(
-    \ {'source': 'find '.( empty("<args>") ? ( <bang>0 ? "~" : "." ) : "<args>" ) .' -type d',
+    \ {'source': 'find '.( empty("<args>") ? ( <bang>0 ? "~" : "." ) : "<args>" ) .' -type d', tj
     \ 'sink': 'cd'}))
 
 " Telescope
@@ -165,3 +165,7 @@ nnoremap <leader>tg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>tb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>th <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>tj <cmd>lua require('telescope.builtin').jumplist()<cr>
+
+" Use deoplete.
+" let g:deoplete#enable_at_startup = 1
+" let g:python3_host_prog = '/home/yenonn/Development/virtualenv/python39/bin/python3'

@@ -125,9 +125,13 @@ alias go='/usr/local/go/bin/go'
 alias k9s='k9s --logoless'
 alias yt='youtube-dl'
 alias r='ranger'
+alias tf="terraform"
 alias mpview='mpv --script-opts=iptv=1'
 alias preview="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -500'"
 alias c="cmatrix -C blue"
+alias pycharm="/home/yenonn/pycharm-community-2021.2.3/bin/pycharm.sh"
+alias mount-belacan=" sshfs -o allow_other,default_permissions yenonn@belacan:/home/yenonn/Downloads /mnt/belacan
+"
 
 
 # The next line updates PATH for the Google Cloud SDK.
