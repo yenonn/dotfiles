@@ -3,34 +3,41 @@ env:
   LANG: en_US.UTF-8
   LC_CTYPE: en_US.UTF-8
 window:
-  startup_mode: Fullscreen
+  startup_mode: Windowed
+  decorations: None
+  opacity: 0.8
   dynamic_title: true
 colors:
-  name: 3024 (dark)
+  name: Ashes (dark)
   author: Chris Kempson
   primary:
-    background: "#090300"
-    foreground: "#a5a2a2"
+    background: "#1c2023"
+    foreground: "#c7ccd1"
   cursor:
-    text: "#090300"
-    cursor: "#a5a2a2"
+    text: "#1c2023"
+    cursor: "#c7ccd1"
   normal:
-    black: "#090300"
-    red: "#db2d20"
-    green: "#01a252"
-    yellow: "#fded02"
-    blue: "#01a0e4"
-    magenta: "#a16a94"
-    cyan: "#b5e4f4"
-    white: "#a5a2a2"
+    black: "#1c2023"
+    red: "#c7ae95"
+    green: "#95c7ae"
+    yellow: "#aec795"
+    blue: "#ae95c7"
+    magenta: "#c795ae"
+    cyan: "#95aec7"
+    white: "#c7ccd1"
   bright:
-    black: "#5c5855"
-    red: "#db2d20"
-    green: "#01a252"
-    yellow: "#fded02"
-    blue: "#01a0e4"
-    magenta: "#a16a94"
-    cyan: "#b5e4f4"
-    white: "#f7f7f7"
+    black: "#747c84"
+    red: "#c7ae95"
+    green: "#95c7ae"
+    yellow: "#aec795"
+    blue: "#ae95c7"
+    magenta: "#c795ae"
+    cyan: "#95aec7"
+    white: "#f3f4f5"
 shell:
   program: /usr/bin/tmux
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Return, mods: Super, action: ToggleFullscreen }
+theme: Ashes.dark

@@ -117,11 +117,11 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vi="nvim"
 alias vim="nvim"
 alias v="nvim"
+alias vg="vagrant"
 alias lg="lazygit"
 alias cp="cp -i"
 alias df='df -h'
 alias free='free -m'
-alias go='/usr/local/go/bin/go'
 alias k9s='k9s --logoless'
 alias yt='youtube-dl'
 alias r='ranger'
@@ -130,9 +130,9 @@ alias mpview='mpv --script-opts=iptv=1'
 alias preview="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -500'"
 alias c="cmatrix -C blue"
 alias pycharm="/home/yenonn/pycharm-community-2021.2.3/bin/pycharm.sh"
-alias mount-belacan=" sshfs -o allow_other,default_permissions yenonn@belacan:/home/yenonn/Downloads /mnt/belacan
-"
-
+#alias mount-belacan="sshfs -o allow_other,default_permissions yenonn@belacan:/opt/hdd/ /mnt/belacan"
+alias belacan="ssh belacan"
+alias tv='mpv --script-opts=iptv=1 /home/yenonn/Development/iptv/channels/iptv.m3u'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/yenonn/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/home/yenonn/bin/google-cloud-sdk/path.zsh.inc'; fi
@@ -166,12 +166,17 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Go environment variable
-if [ -f '/home/yenonn/.config/go/env' ]; then . '/home/yenonn/.config/go/env'; fi
+GO111MODULE=auto
+export GOPATH="/home/yenonn/GOPATH"
+export GOBIN="$GOPATH/bin/"
+export GOROOT="/usr/local/go"
+export PATH=$PATH:$GOPATH:$GOBIN:$GOROOT/bin
+alias go='/usr/local/go/bin/go'
 
-alias cluster1="kubectx cluster1"
-alias cluster2="kubectx cluster2"
-alias rediscluster1="kubectx rediscluster1"
-alias rediscluster2="kubectx rediscluster2"
+# Kubernetes cluster setup
 alias newshell="kubectl run my-shell --rm -i --tty --image ubuntu -- bash"
-export CTX_CLUSTER1="cluster1"
-export CTX_CLUSTER2="cluster2"
+
+# >>>> Vagrant command completion (start)
+fpath=(/opt/vagrant/embedded/gems/2.2.19/gems/vagrant-2.2.19/contrib/zsh $fpath)
+compinit
+# <<<<  Vagrant command completion (end)

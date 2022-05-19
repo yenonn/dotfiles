@@ -30,6 +30,12 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ggandor/lightspeed.nvim'
+Plug 'lfilho/cosco.vim'
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'hashivim/vim-terraform'
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 call plug#end()
 
 let mapleader=" "
@@ -61,20 +67,21 @@ nnoremap <leader>z :wincmd \|<CR>
 nnoremap <leader>zz :wincmd =<CR>
 nnoremap <leader>. :wincmd = \| :wincmd l \| :wincmd \|<CR>
 nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
-nnoremap <leader>n :bn<CR>
 nnoremap <silent> <C-n> :tabNext<CR>  
-nnoremap <leader>p :bp<CR>
-nnoremap <leader>d :bd<CR>
-nnoremap <leader>q :wq!<CR>
-nnoremap <leader>qq :qa!<CR>
+" nnoremap <leader>n :bn<CR>
+" nnoremap <leader>p :bp<CR>
+" nnoremap <leader>d :bd<CR>
+nnoremap <leader>q :q!<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>rr :e!<CR>
+nnoremap <Esc><Esc> :noh<return>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
+inoremap zz <Esc>
 inoremap II <Esc>I
 inoremap AA <Esc>A
 inoremap OO <Esc>O
@@ -103,15 +110,19 @@ vnoremap <leader>P "+P
 
 " auto_save config
 let g:auto_save = 1
-let g:auto_save_events = ["TextChanged", "CursorHold"]
+let g:auto_save_events = ["TextChanged", "CursorHold", "InsertLeave"]
 
 " NERDTree
 nnoremap <C-z> :NERDTreeToggle<CR>
 let NERDTreeCustomOpenArgs = {'file':{'where':'v', 'reuse':'currenttab', 'keepopen':1, 'stay':0}}
 let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 " auto open NERDTree
 " autocmd VimEnter * NERDTree
-" autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Trigger help from devicons for more options
 " :help devicons
@@ -140,7 +151,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " fzf find
 " nnoremap <silent> <C-t> :Files %:p:h<CR>
-nnoremap <silent> <C-t> :Files<CR>
+nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
@@ -166,6 +177,10 @@ nnoremap <leader>tb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>th <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>tj <cmd>lua require('telescope.builtin').jumplist()<cr>
 
-" Use deoplete.
-" let g:deoplete#enable_at_startup = 1
-" let g:python3_host_prog = '/home/yenonn/Development/virtualenv/python39/bin/python3'
+" Auto adding semicolon for javascript/typescript
+nmap <F9> :AutoCommaOrSemiColonToggle<CR>
+
+" Typescript hover to show out the variable type
+autocmd CursorHold * silent call CocActionAsync('doHover')
+
+let g:go_fmt_autosave = 0

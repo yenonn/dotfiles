@@ -17,10 +17,11 @@
     "python.linting.pylintArgs": [
         "--errors-only"
     ],
-    "python.pythonPath": "/home/yenonn/Development/virtualenv/python39/bin/python",
+    "python.pythonPath": "/home/yenonn/Development/virtualenv/skywalker/bin/python",
     "python.venvPath": "/home/yenonn/Development/virtualenv",
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "/home/yenonn/.local/bin/black",
+    "python.analysis.extraPaths": ["/home/yenonn/Development/skywalker/src/libs"],
     "languageserver": {
        "golang": {
          "command": "gopls",
