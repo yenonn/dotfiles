@@ -36,6 +36,7 @@ Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'        " GraphQL syntax
+Plug 'tpope/vim-surround'
 call plug#end()
 
 let mapleader=" "
@@ -53,6 +54,7 @@ set smartcase
 set noswapfile
 set nobackup
 set incsearch
+set splitright
 set colorcolumn=100
 
 " colorscheme
