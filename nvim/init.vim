@@ -81,8 +81,12 @@ nnoremap <Esc><Esc> :noh<return>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" nnoremap K :m .-2<CR>==
+" nnoremap J :m .+1<CR>==
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
+vnoremap L xp`[v`]
+vnoremap H xhhp`[v`]
 inoremap zz <Esc>
 inoremap II <Esc>I
 inoremap AA <Esc>A
