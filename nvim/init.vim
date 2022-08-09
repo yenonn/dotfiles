@@ -157,7 +157,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " fzf find
 " nnoremap <silent> <C-t> :Files %:p:h<CR>
-nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-p> :Files %:p:h<CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
