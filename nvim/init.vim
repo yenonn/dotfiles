@@ -87,6 +87,7 @@ vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap L xp`[v`]
 vnoremap H xhhp`[v`]
+vnoremap zz <Esc>
 inoremap zz <Esc>
 inoremap II <Esc>I
 inoremap AA <Esc>A

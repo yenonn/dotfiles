@@ -1,0 +1,6 @@
+clear lock
+clear Mod1
+keycode 66 = Escape
+keycode 135 = Super_L Super_R
+keycode 108 = grave
+!keycode 64 = grave
