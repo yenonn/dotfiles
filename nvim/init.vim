@@ -9,6 +9,12 @@
 call plug#begin('~/.nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+Plug 'arzg/vim-colors-xcode'
+Plug 'tomasr/molokai'
+Plug 'dracula/vim', { 'name': 'dracula' }
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug '907th/vim-auto-save'
@@ -57,9 +63,22 @@ set incsearch
 set splitright
 set colorcolumn=100
 
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+
 " colorscheme
-colorscheme gruvbox
-" colorscheme nord
+" colorscheme gruvbox
+" colorscheme nord 
+" colorscheme embark
+" colorscheme xcodedarkhc
+colorscheme molokai
+" let g:molokai_original = 1
+" colorscheme dracula
+" colorscheme onehalfdark
+" let g:airline_theme='onehalfdark'
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -70,10 +89,11 @@ nnoremap <leader>zz :wincmd =<CR>
 nnoremap <leader>. :wincmd = \| :wincmd l \| :wincmd \|<CR>
 nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
 nnoremap <silent> <C-n> :tabNext<CR>  
-" nnoremap <leader>n :bn<CR>
-" nnoremap <leader>p :bp<CR>
-" nnoremap <leader>d :bd<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>N :bp<CR>
+nnoremap <leader>d :bd<CR>
 nnoremap <leader>q :q!<CR>
+nnoremap <leader>qq :wqa<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>rr :e!<CR>
@@ -158,7 +178,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " fzf find
 " nnoremap <silent> <C-t> :Files %:p:h<CR>
-nnoremap <silent> <C-p> :Files %:p:h<CR>
+nnoremap <silent> <C-p> :Files <CR>
 nnoremap <silent> <C-g> :GFiles<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
