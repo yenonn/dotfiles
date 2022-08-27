@@ -32,7 +32,6 @@ Plug 'tpope/vim-commentary'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ggandor/lightspeed.nvim'
@@ -189,25 +188,11 @@ command! -bang -bar -nargs=? -complete=dir Cd
     \ {'source': 'find '.( empty("<args>") ? ( <bang>0 ? "~" : "." ) : "<args>" ) .' -type d', tj
     \ 'sink': 'cd'}))
 
-" Telescope
-" Find files using Telescope command-line sugar.
-nnoremap <leader>tf <cmd>Telescope find_files<cr>
-nnoremap <leader>tg <cmd>Telescope live_grep<cr>
-nnoremap <leader>tb <cmd>Telescope buffers<cr>
-nnoremap <leader>th <cmd>Telescope help_tags<cr>
-nnoremap <leader>tj <cmd>Telescope jumplist<cr>
-
-" Using Lua functions
-nnoremap <leader>tf <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>tg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>tb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>th <cmd>lua require('telescope.builtin').help_tags()<cr>
-nnoremap <leader>tj <cmd>lua require('telescope.builtin').jumplist()<cr>
-
 " Auto adding semicolon for javascript/typescript
 nmap <F9> :AutoCommaOrSemiColonToggle<CR>
-
-" Typescript hover to show out the variable type
-autocmd CursorHold * silent call CocActionAsync('doHover')
-
 let g:go_fmt_autosave = 0
+nnoremap gd :call CocActionAsync('jumpDefinition')<CR>
+nnoremap gD :call CocActionAsync('jumpDeclaration')<CR>
+nnoremap gr :call CocActionAsync('jumpReferences')<CR>
+nnoremap gh :call CocActionAsync('doHover')<CR>
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
