@@ -88,9 +88,9 @@ nnoremap <leader>zz :wincmd =<CR>
 nnoremap <leader>. :wincmd = \| :wincmd l \| :wincmd \|<CR>
 nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
 nnoremap <silent> <C-n> :tabNext<CR>  
-nnoremap <leader>n :bn<CR>
-nnoremap <leader>N :bp<CR>
-nnoremap <leader>d :bd<CR>
+nnoremap <S-l> :bn<CR>
+nnoremap <S-h> :bp<CR>
+nnoremap <S-d> :bd<CR>
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>qq :wqa<CR>
 nnoremap <leader>vs :vs<CR>
@@ -139,7 +139,7 @@ let g:auto_save = 1
 let g:auto_save_events = ["TextChanged", "CursorHold", "InsertLeave"]
 
 " NERDTree
-nnoremap <C-z> :NERDTreeToggle<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
 let NERDTreeCustomOpenArgs = {'file':{'where':'v', 'reuse':'currenttab', 'keepopen':1, 'stay':0}}
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
