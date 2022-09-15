@@ -97,7 +97,7 @@ nnoremap <A-l> <C-W><C-L>
 nnoremap <A-h> <C-W><C-H>
 nnoremap <A-j> <C-W><C-J>
 nnoremap <A-k> <C-W><C-K>
-nnoremap <leader>q :q!<CR>
+nnoremap <leader>q :wq!<CR>
 nnoremap <leader>qq :wqa<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>w :w<CR>
@@ -123,7 +123,6 @@ inoremap SS <Esc>S
 inoremap DD <Esc>dd
 inoremap UU <Esc>u
 inoremap <C-b> <C-o>h
-inoremap <C-h> <left>
 inoremap <C-w> <C-o>w
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
