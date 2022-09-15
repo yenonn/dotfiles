@@ -19,7 +19,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug '907th/vim-auto-save'
 Plug 'jiangmiao/auto-pairs'
-Plug 'voldikss/vim-floaterm'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'junegunn/fzf.vim'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'f-person/git-blame.nvim'
@@ -147,7 +147,7 @@ let g:auto_save_events = ["TextChanged", "CursorHold", "InsertLeave"]
 
 " NERDTree
 nnoremap <leader>e :NERDTreeToggle<CR>
-let NERDTreeCustomOpenArgs = {'file':{'where':'v', 'reuse':'currenttab', 'keepopen':1, 'stay':0}}
+let NERDTreeCustomOpenArgs = {'file':{'where':'p', 'reuse':'currenttab', 'keepopen':0, 'stay':0}}
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
@@ -167,9 +167,22 @@ let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 
-" Floaterm
-nnoremap <C-x> :FloatermNew! cd %:p:h<CR>
-let g:floaterm_autoclose = 1
+" Toggleterm
+lua <<EOF
+require('toggleterm').setup {
+      size = 10,
+      open_mapping = [[<c-\>]],
+      shading_factor = 2,
+      direction = "float",
+      float_opts = {
+        border = "curved",
+        highlights = {
+          border = "Normal",
+          background = "Normal",
+        },
+      },
+    }
+EOF
 
 " YAML files
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
