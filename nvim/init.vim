@@ -1,4 +1,4 @@
-" https://github.com/junegunn/vim-plug
+":lua require'telescope.builtin'.planets{} https://github.com/junegunn/vim-plug
 "installing the vim plugin
 " mkdir -p ~/.nvim/plugged
 " mkdir -p ~/.nvim/autoload
@@ -32,6 +32,7 @@ Plug 'tpope/vim-commentary'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ggandor/lightspeed.nvim'
@@ -42,6 +43,7 @@ Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'tpope/vim-surround'
+Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
 let mapleader=" "
@@ -90,13 +92,17 @@ nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
 nnoremap <silent> <C-n> :tabNext<CR>  
 nnoremap <S-l> :bn<CR>
 nnoremap <S-h> :bp<CR>
-nnoremap <S-d> :bd<CR>
+nnoremap <leader>d :bd<CR>
+nnoremap <A-l> <C-W><C-L>
+nnoremap <A-h> <C-W><C-H>
+nnoremap <A-j> <C-W><C-J>
+nnoremap <A-k> <C-W><C-K>
 nnoremap <leader>q :q!<CR>
 nnoremap <leader>qq :wqa<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>rr :e!<CR>
-nnoremap <Esc><Esc> :noh<return>
+"nnoremap <Esc><Esc> :noh<return>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
@@ -108,6 +114,7 @@ vnoremap L xp`[v`]
 vnoremap H xhhp`[v`]
 vnoremap zz <Esc>
 inoremap zz <Esc>
+inoremap jk <Esc>
 inoremap II <Esc>I
 inoremap AA <Esc>A
 inoremap OO <Esc>O
@@ -139,7 +146,7 @@ let g:auto_save = 1
 let g:auto_save_events = ["TextChanged", "CursorHold", "InsertLeave"]
 
 " NERDTree
-nnoremap <C-e> :NERDTreeToggle<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 let NERDTreeCustomOpenArgs = {'file':{'where':'v', 'reuse':'currenttab', 'keepopen':1, 'stay':0}}
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
@@ -196,3 +203,123 @@ nnoremap gD :call CocActionAsync('jumpDeclaration')<CR>
 nnoremap gr :call CocActionAsync('jumpReferences')<CR>
 nnoremap gh :call CocActionAsync('doHover')<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" telescope
+nnoremap <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
+nnoremap <leader>fw :lua require'telescope.builtin'.grep_string{}<CR>
+nnoremap <leader>fW :lua require'telescope.builtin'.live_grep{}<CR>
+lua <<EOF
+local actions = require "telescope.actions"
+require('telescope').setup{
+  defaults = {
+    prompt_prefix = "🔍 ",
+    selection_caret = "❯ ",
+    path_display = { "truncate" },
+    selection_strategy = "reset",
+    sorting_strategy = "ascending",
+    layout_strategy = "horizontal",
+    layout_config = {
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.55,
+        results_width = 0.8,
+      },
+      vertical = {
+        mirror = false,
+      },
+      width = 0.87,
+      height = 0.80,
+      preview_cutoff = 120,
+    },
+
+    mappings = {
+      i = {
+        ["<C-n>"] = actions.cycle_history_next,
+        ["<C-p>"] = actions.cycle_history_prev,
+
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+
+        ["<C-c>"] = actions.close,
+
+        ["<Down>"] = actions.move_selection_next,
+        ["<Up>"] = actions.move_selection_previous,
+
+        ["<CR>"] = actions.select_default,
+        ["<C-x>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
+        ["<C-t>"] = actions.select_tab,
+
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["<C-d>"] = actions.preview_scrolling_down,
+
+        ["<PageUp>"] = actions.results_scrolling_up,
+        ["<PageDown>"] = actions.results_scrolling_down,
+
+        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<C-l>"] = actions.complete_tag,
+      },
+
+      n = {
+        ["<esc><esc>"] = actions.close,
+        ["<CR>"] = actions.select_default,
+        ["<C-x>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
+        ["<C-t>"] = actions.select_tab,
+
+        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+        ["j"] = actions.move_selection_next,
+        ["k"] = actions.move_selection_previous,
+        ["H"] = actions.move_to_top,
+        ["M"] = actions.move_to_middle,
+        ["L"] = actions.move_to_bottom,
+
+        ["<Down>"] = actions.move_selection_next,
+        ["<Up>"] = actions.move_selection_previous,
+        ["gg"] = actions.move_to_top,
+        ["G"] = actions.move_to_bottom,
+
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["<C-d>"] = actions.preview_scrolling_down,
+
+        ["<PageUp>"] = actions.results_scrolling_up,
+        ["<PageDown>"] = actions.results_scrolling_down,
+      },
+    },
+  },
+}
+EOF
+" treesitter
+lua <<EOF
+  require('nvim-treesitter.configs').setup {
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
+  rainbow = {
+    enable = true,
+    disable = { "html" },
+    extended_mode = false,
+    max_file_lines = nil,
+  },
+  autopairs = { enable = true },
+  autotag = { enable = true },
+  incremental_selection = { enable = true },
+  indent = { enable = false },
+}
+EOF
