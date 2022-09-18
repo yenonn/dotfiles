@@ -93,10 +93,10 @@ nnoremap <silent> <C-n> :tabNext<CR>
 nnoremap <S-l> :bn<CR>
 nnoremap <S-h> :bp<CR>
 nnoremap <leader>d :bd<CR>
-nnoremap <A-l> <C-W><C-L>
-nnoremap <A-h> <C-W><C-H>
-nnoremap <A-j> <C-W><C-J>
-nnoremap <A-k> <C-W><C-K>
+nnoremap <A-l> <C-w><C-l>
+nnoremap <A-h> <C-w><C-h>
+nnoremap <A-j> <C-w><C-j>
+nnoremap <A-k> <C-w><C-k>
 nnoremap <leader>q :wq!<CR>
 nnoremap <leader>qq :wqa<CR>
 nnoremap <leader>vs :vs<CR>
@@ -167,6 +167,7 @@ let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 
 " Toggleterm
+nnoremap <leader>th :ToggleTerm size=10 direction=horizontal<CR>
 lua <<EOF
 require('toggleterm').setup {
       size = 10,
