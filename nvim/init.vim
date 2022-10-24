@@ -351,6 +351,6 @@ EOF
 nmap <leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
 xmap <leader>di <Plug>VimspectorBalloonEval
-nmap <leader>dx <Plug>VimspectorReset<CR>
+nmap <leader>dx :call vimspector#Reset()<CR>
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_base_dir=expand('$HOME/.nvim/plugged/vimspector')
