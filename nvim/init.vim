@@ -43,7 +43,7 @@ Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'tpope/vim-surround'
-Plug 'mfussenegger/nvim-dap'
+Plug 'puremourning/vimspector'
 call plug#end()
 
 let mapleader=" "
@@ -344,3 +344,13 @@ lua <<EOF
   indent = { enable = false },
 }
 EOF
+
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+
+" for normal mode - the word under the cursor
+nmap <leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <leader>di <Plug>VimspectorBalloonEval
+nmap <leader>dx <Plug>VimspectorReset<CR>
+let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_base_dir=expand('$HOME/.nvim/plugged/vimspector')
