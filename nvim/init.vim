@@ -21,6 +21,7 @@ Plug '907th/vim-auto-save'
 Plug 'jiangmiao/auto-pairs'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'f-person/git-blame.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -122,6 +123,7 @@ inoremap CC <Esc>C
 inoremap SS <Esc>S
 inoremap DD <Esc>dd
 inoremap UU <Esc>u
+nnoremap <Esc><Esc> :nohl<CR>
 inoremap <C-b> <C-o>h
 inoremap <C-w> <C-o>w
 inoremap <C-j> <C-o>j
@@ -354,3 +356,6 @@ xmap <leader>di <Plug>VimspectorBalloonEval
 nmap <leader>dx :call vimspector#Reset()<CR>
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_base_dir=expand('$HOME/.nvim/plugged/vimspector')
+let g:vimspector_sidebar_width = 80
+let g:vimspector_code_minwidth = 85
+let g:vimspector_terminal_minwidth = 75
