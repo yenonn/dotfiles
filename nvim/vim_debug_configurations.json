@@ -36,7 +36,7 @@
       }
     },
     "Golang: run current script": {
-      "adapter": "vscode-go",
+      "adapter": "delve",
       "configuration": {
         "request": "launch",
         "program": "${file}",
