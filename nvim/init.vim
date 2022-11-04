@@ -4,7 +4,7 @@
 " mkdir -p ~/.nvim/autoload
 " mkdir -p ~/.nvim/colors
 " curl -fLo ~/.nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" From the vim command windows, prompt :PlugInstall to proceed plugins
+" Fro the vim command windows, prompt :PlugInstall to proceed plugins
 " installation
 call plug#begin('~/.nvim/plugged')
 Plug 'morhetz/gruvbox'
@@ -63,6 +63,7 @@ set noswapfile
 set nobackup
 set incsearch
 set splitright
+set foldmethod=indent
 set colorcolumn=100
 
 let g:go_highlight_functions = 1
@@ -72,11 +73,11 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 
 " colorscheme
-" colorscheme gruvbox
+colorscheme gruvbox
 " colorscheme nord 
 " colorscheme embark
 " colorscheme xcodedarkhc
-colorscheme molokai
+" colorscheme molokai
 " let g:molokai_original = 1
 " colorscheme dracula
 " colorscheme onehalfdark
