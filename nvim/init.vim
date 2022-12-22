@@ -45,6 +45,7 @@ Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'tpope/vim-surround'
 Plug 'puremourning/vimspector'
 Plug 'easymotion/vim-easymotion'
+Plug 'mbbill/undotree'
 " Plug 'williamboman/mason.nvim'
 " Plug 'williamboman/mason-lspconfig.nvim'
 " Plug 'williamboman/nvim-lsp-installer'
