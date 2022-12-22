@@ -45,6 +45,10 @@ Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'tpope/vim-surround'
 Plug 'puremourning/vimspector'
 Plug 'easymotion/vim-easymotion'
+" Plug 'williamboman/mason.nvim'
+" Plug 'williamboman/mason-lspconfig.nvim'
+" Plug 'williamboman/nvim-lsp-installer'
+" Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 let mapleader=" "
@@ -89,6 +93,9 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>z :wincmd \|<CR>
 nnoremap <leader>zz :wincmd =<CR>
+nnoremap <leader>ex :Ex<CR>
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 nnoremap <leader>. :wincmd = \| :wincmd l \| :wincmd \|<CR>
 nnoremap <leader>, :wincmd = \| :wincmd h \| :wincmd \|<CR>
 nnoremap <silent> <C-n> :tabNext<CR>  
@@ -142,6 +149,7 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+xnoremap <leader>p "\"_dP"
 
 " auto_save config
 let g:auto_save = 1
@@ -222,11 +230,24 @@ command! -bang -bar -nargs=? -complete=dir Cd
 " Auto adding semicolon for javascript/typescript
 nmap <F9> :AutoCommaOrSemiColonToggle<CR>
 let g:go_fmt_autosave = 0
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap gd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap gD :call CocActionAsync('jumpDeclaration')<CR>
 nnoremap gr :call CocActionAsync('jumpReferences')<CR>
 nnoremap gh :call CocActionAsync('doHover')<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " telescope
 nnoremap <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
