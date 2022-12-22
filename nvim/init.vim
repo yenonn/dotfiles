@@ -403,3 +403,18 @@ map <leader><leader>k <Plug>(easymotion-k)
 map <leader><leader>f <Plug>(easymotion-overwin-f)
 map <leader><leader>w <Plug>(easymotion-overwin-w)
 map <leader><leader>. <Plug>(easymotion-overwin-w)
+
+" UndoTree
+if has("persistent_undo")
+   let target_path = expand('~/.undodir')
+
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+endif
+nnoremap <leader>UU :UndotreeToggle<CR>:UndotreeFocus<CR>
