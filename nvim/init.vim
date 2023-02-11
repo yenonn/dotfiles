@@ -127,7 +127,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap L xp`[v`]
-vnoremap H xhhp`[v`]
+vnoremap H xhp`[v`]
 vnoremap zz <Esc>
 inoremap zz <Esc>
 inoremap jk <Esc>
