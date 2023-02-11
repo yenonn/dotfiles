@@ -403,6 +403,7 @@ require("null-ls").setup({
         null_ls.builtins.formatting.yamlfmt,
         null_ls.builtins.formatting.terafmt,
         null_ls.builtins.diagnostics.pylint.with({extra_args = {"--errors-only"}}),
+        null_ls.builtins.diagnostics.golangci_lint,
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
