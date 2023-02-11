@@ -398,6 +398,10 @@ require("null-ls").setup({
     sources = {
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.goimports,
+        null_ls.builtins.formatting.jq,
+        null_ls.builtins.formatting.yamlfmt,
+        null_ls.builtins.formatting.terafmt,
         null_ls.builtins.diagnostics.pylint.with({extra_args = {"--errors-only"}}),
     },
     on_attach = function(client, bufnr)
