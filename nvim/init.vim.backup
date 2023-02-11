@@ -16,6 +16,7 @@ Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug '907th/vim-auto-save'
 Plug 'jiangmiao/auto-pairs'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
@@ -23,7 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'f-person/git-blame.nvim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go'
@@ -32,30 +33,23 @@ Plug 'tpope/vim-commentary'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lfilho/cosco.vim'
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'hashivim/vim-terraform'
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'tpope/vim-surround'
 Plug 'puremourning/vimspector'
+Plug 'easymotion/vim-easymotion'
 Plug 'mbbill/undotree'
-" Lsp setup
+" Plug 'williamboman/mason.nvim'
+" Plug 'williamboman/mason-lspconfig.nvim'
 " Plug 'williamboman/nvim-lsp-installer'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-" For luasnip users.
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-
-Plug 'jose-elias-alvarez/null-ls.nvim'
+" Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 let mapleader=" "
@@ -163,16 +157,16 @@ let g:auto_save = 1
 let g:auto_save_events = ["TextChanged", "CursorHold", "InsertLeave"]
 
 " NERDTree
-" nnoremap <leader>e :NERDTreeToggle<CR>
-" let NERDTreeCustomOpenArgs = {'file':{'where':'p', 'reuse':'currenttab', 'keepopen':0, 'stay':0}}
-" let NERDTreeShowHidden=1
-" let NERDTreeQuitOnOpen = 1
-" let NERDTreeAutoDeleteBuffer = 1
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
+nnoremap <leader>e :NERDTreeToggle<CR>
+let NERDTreeCustomOpenArgs = {'file':{'where':'p', 'reuse':'currenttab', 'keepopen':0, 'stay':0}}
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 " auto open NERDTree
 " autocmd VimEnter * NERDTree
-" autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Trigger help from devicons for more options
 " :help devicons
@@ -229,192 +223,32 @@ nnoremap <silent> <C-c> :Commits<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <C-r> :registers<CR>
 nnoremap <C-f> :Rg<CR>
+command! -bang -bar -nargs=? -complete=dir Cd
+    \ call fzf#run(fzf#wrap(
+    \ {'source': 'find '.( empty("<args>") ? ( <bang>0 ? "~" : "." ) : "<args>" ) .' -type d', tj
+    \ 'sink': 'cd'}))
 
-" Auto save
+" Auto adding semicolon for javascript/typescript
+nmap <F9> :AutoCommaOrSemiColonToggle<CR>
 let g:go_fmt_autosave = 0
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap gd :call CocActionAsync('jumpDefinition')<CR>
+nnoremap gD :call CocActionAsync('jumpDeclaration')<CR>
+nnoremap gr :call CocActionAsync('jumpReferences')<CR>
+nnoremap gh :call CocActionAsync('doHover')<CR>
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" Native lsp setup
-lua <<EOF
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-end
-
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
-
-require'lspconfig'.gopls.setup{
-    capabilities = capabilities,
-    flags = lsp_flags,
-    on_attach = on_attach,
-}
-
-require'lspconfig'.pyright.setup{
-    capabilities = capabilities,
-    flags = lsp_flags,
-    on_attach = on_attach,
-}
-
-require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
-
-require('lspconfig')['rust_analyzer'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    -- Server-specific settings...
-    settings = {
-      ["rust-analyzer"] = {}
-    }
-}
-EOF
-
-" nvim-cmp
-lua <<EOF
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
-  -- Set up nvim-cmp.
-  local cmp = require'cmp'
-
-  cmp.setup({
-    snippet = {
-      expand = function(args)
-        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      end,
-    },
-    window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
-  -- Set configuration for specific filetype.
-  cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
-  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-      { name = 'buffer' }
-    }
-  })
-
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    })
-  })
-EOF
-
-" null-ls
-lua <<EOF
-local null_ls = require("null-ls")
-local async_formatting = function(bufnr)
-    bufnr = bufnr or vim.api.nvim_get_current_buf()
-
-    vim.lsp.buf_request(
-        bufnr,
-        "textDocument/formatting",
-        vim.lsp.util.make_formatting_params({}),
-        function(err, res, ctx)
-            if err then
-                local err_msg = type(err) == "string" and err or err.message
-                -- you can modify the log message / level (or ignore it completely)
-                vim.notify("formatting: " .. err_msg, vim.log.levels.WARN)
-                return
-            end
-
-            -- don't apply results if buffer is unloaded or has been modified
-            if not vim.api.nvim_buf_is_loaded(bufnr) or vim.api.nvim_buf_get_option(bufnr, "modified") then
-                return
-            end
-
-            if res then
-                local client = vim.lsp.get_client_by_id(ctx.client_id)
-                vim.lsp.util.apply_text_edits(res, bufnr, client and client.offset_encoding or "utf-16")
-                vim.api.nvim_buf_call(bufnr, function()
-                    vim.cmd("silent noautocmd update")
-                end)
-            end
-        end
-    )
-end
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-require("null-ls").setup({
-    debug = true,
-    sources = {
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.gofmt,
-        null_ls.builtins.diagnostics.pylint.with({extra_args = {"--errors-only"}}),
-    },
-    on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                    -- vim.lsp.buf.formatting_sync()
-                end,
-            })
-        end
-    end,
-})
-EOF
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " telescope
 nnoremap <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
@@ -537,6 +371,7 @@ lua <<EOF
 EOF
 
 " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+
 " for normal mode - the word under the cursor
 nmap <leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
@@ -547,6 +382,27 @@ let g:vimspector_base_dir=expand('$HOME/.nvim/plugged/vimspector')
 let g:vimspector_sidebar_width = 80
 let g:vimspector_code_minwidth = 85
 let g:vimspector_terminal_minwidth = 75
+
+" Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap <leader><leader>s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap <leader><leader>s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <leader><leader>j <Plug>(easymotion-j)
+map <leader><leader>k <Plug>(easymotion-k)
+map <leader><leader>f <Plug>(easymotion-overwin-f)
+map <leader><leader>w <Plug>(easymotion-overwin-w)
+map <leader><leader>. <Plug>(easymotion-overwin-w)
 
 " UndoTree
 if has("persistent_undo")
