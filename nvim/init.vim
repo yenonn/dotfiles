@@ -162,18 +162,6 @@ xnoremap <leader>p "\"_dP"
 let g:auto_save = 1
 let g:auto_save_events = ["TextChanged", "CursorHold", "InsertLeave"]
 
-" NERDTree
-" nnoremap <leader>e :NERDTreeToggle<CR>
-" let NERDTreeCustomOpenArgs = {'file':{'where':'p', 'reuse':'currenttab', 'keepopen':0, 'stay':0}}
-" let NERDTreeShowHidden=1
-" let NERDTreeQuitOnOpen = 1
-" let NERDTreeAutoDeleteBuffer = 1
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
-" auto open NERDTree
-" autocmd VimEnter * NERDTree
-" autocmd bufenter * if (winnr("$") == 1 && exists ("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " Trigger help from devicons for more options
 " :help devicons
 let g:webdevicons_enable = 1
