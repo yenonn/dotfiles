@@ -56,6 +56,7 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 let mapleader=" "
@@ -556,3 +557,7 @@ if has("persistent_undo")
     set undofile
 endif
 nnoremap <leader>UU :UndotreeToggle<CR>:UndotreeFocus<CR>
+
+" Tagbar Toggle
+
+nnoremap <silent> <S-t> :TagbarToggle<cr>
