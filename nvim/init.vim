@@ -35,6 +35,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'lfilho/cosco.vim'
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
@@ -504,13 +505,14 @@ EOF
 " treesitter
 lua <<EOF
   require('nvim-treesitter.configs').setup {
+  ensure_installed = {'python', 'go', 'lua', 'typescript', 'bash', 'json'},
   highlight = {
     enable = true,
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
   context_commentstring = {
     enable = true,
@@ -519,13 +521,13 @@ lua <<EOF
   rainbow = {
     enable = true,
     disable = { "html" },
-    extended_mode = false,
+    extended_mode = true,
     max_file_lines = nil,
   },
   autopairs = { enable = true },
   autotag = { enable = true },
   incremental_selection = { enable = true },
-  indent = { enable = false },
+  indent = { enable = true },
 }
 EOF
 
