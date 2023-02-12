@@ -241,6 +241,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'gT', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -389,7 +390,6 @@ require("null-ls").setup({
         null_ls.builtins.formatting.goimports,
         null_ls.builtins.formatting.jq,
         null_ls.builtins.formatting.yamlfmt,
-        null_ls.builtins.formatting.terafmt,
         null_ls.builtins.diagnostics.pylint.with({extra_args = {"--errors-only"}}),
         null_ls.builtins.diagnostics.golangci_lint,
     },
