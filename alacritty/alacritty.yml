@@ -36,6 +36,17 @@ colors:
     magenta: "#996600"
     cyan: "#87ceeb"
     white: "#fdfdfd"
+font:
+  normal:
+    family: FiraCode
+    style: Regular
+  bold:
+    family: FiraCode
+    style: Bold
+  italic:
+    family: FiraCode
+    style: italic
+  size: 11
 shell:
   program: /usr/bin/tmux
 key_bindings:
