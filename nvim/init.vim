@@ -58,6 +58,7 @@ Plug 'simrat39/rust-tools.nvim'
 
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'majutsushi/tagbar'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 let mapleader=" "
@@ -568,3 +569,25 @@ nnoremap <leader>UU :UndotreeToggle<CR>:UndotreeFocus<CR>
 " Tagbar Toggle
 
 nnoremap <silent> <S-t> :TagbarToggle<cr>
+
+" easymotion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" Gif config
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+
+" Gif config
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+let g:EasyMotion_smartcase = 1
