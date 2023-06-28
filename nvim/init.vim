@@ -54,6 +54,7 @@ Plug 'hrsh7th/nvim-cmp'
 " For luasnip users.
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'simrat39/rust-tools.nvim'
 
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'majutsushi/tagbar'
@@ -158,6 +159,12 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 xnoremap <leader>p "\"_dP"
+
+" <enter><enter> to highlight
+" Put <enter> to work too! Otherwise <enter> moves to the next line, which we can
+" already do by pressing the <j> key, which is a waste of keys!
+" Be useful <enter> key!:
+nnoremap <silent> <cr><cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
 " auto_save config
 let g:auto_save = 1
