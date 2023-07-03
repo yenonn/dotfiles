@@ -8,12 +8,6 @@
 " installation
 call plug#begin('~/.nvim/plugged')
 Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
-Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-Plug 'arzg/vim-colors-xcode'
-Plug 'tomasr/molokai'
-Plug 'dracula/vim', { 'name': 'dracula' }
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 Plug 'junegunn/vim-easy-align'
@@ -90,14 +84,6 @@ let g:go_highlight_fields = 1
 " colorscheme
 colorscheme catppuccin
 " colorscheme gruvbox
-" colorscheme nord 
-" colorscheme embark
-" colorscheme xcodedarkhc
-" colorscheme molokai
-" let g:molokai_original = 1
-" colorscheme dracula
-" colorscheme onehalfdark
-" let g:airline_theme='onehalfdark'
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
