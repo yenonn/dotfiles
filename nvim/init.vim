@@ -14,6 +14,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 Plug 'junegunn/vim-easy-align'
 Plug '907th/vim-auto-save'
@@ -87,7 +88,8 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 
 " colorscheme
-colorscheme gruvbox
+colorscheme catppuccin
+" colorscheme gruvbox
 " colorscheme nord 
 " colorscheme embark
 " colorscheme xcodedarkhc
@@ -572,22 +574,22 @@ nnoremap <silent> <S-t> :TagbarToggle<cr>
 
 " easymotion
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" map  <Leader>w <Plug>(easymotion-bd-w)
+" nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Gif config
 nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
+" nmap t <Plug>(easymotion-t2)
 
 " Gif config
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
+" map <Leader>l <Plug>(easymotion-lineforward)
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
+" map <Leader>h <Plug>(easymotion-linebackward)
 
-let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-let g:EasyMotion_smartcase = 1
+" let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+" let g:EasyMotion_smartcase = 1
