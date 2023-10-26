@@ -10,7 +10,7 @@ env:
   LC_CTYPE: en_US.UTF-8
 window:
   startup_mode: FullScreen
-  opacity: 0.95
+  opacity: 1.0
   dynamic_title: true
   dimensions:
     columns: 133
@@ -25,7 +25,7 @@ font:
   italic:
     family: JetBrains Mono NL
     style: italic
-  size: 10
+  size: 10 
 shell:
   program: /usr/bin/tmux
 key_bindings:
