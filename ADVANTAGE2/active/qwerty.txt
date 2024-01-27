@@ -1,0 +1,20 @@
+
+
+* arrows
+[caps]>[escape]
+[obrack]>[up]
+[cbrack]>[right]
+[right]>[cbrack]
+[left]>[obrack]
+
+* home cmds
+[home]>[lwin]
+
+[hyphen]>[']
+[']>[hyphen]
+
+[=]>[`]
+[`]>[=]
+
+
+{end}>{lwin}{tab}
